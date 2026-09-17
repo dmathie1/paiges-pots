@@ -165,3 +165,12 @@ section:last-child{
 .hero h1{
     color: #ffffff;
 }
+
+nav a{
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+nav a.active{
+    text-decoration: underline;
+}
