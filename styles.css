@@ -1,8 +1,9 @@
 :root{
-    --color-bg: #ddd4c2;
+    --color-bg: #e6dfd3;
     --color-text: #1a1a1a;
-    --color-accent: #c9502f;
+    --color-accent: #5b7083;
     --color-muted: #666666;
+    --color-card: #f2ecdf;
 }
 @keyframes fadeIn{
     from{
@@ -48,7 +49,7 @@ h2{
 
 p{
     line-height: 1.6;
-    color: var(--color-muted);
+    color: var(--color-text);
 }
 
 ul{
@@ -79,6 +80,10 @@ nav.open{
     left: 0;
     background-color: var(--color-accent);
     padding: 20px;
+    animation: fadeIn 0.3s ease forwards;
+    opacity: 0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
 }
 
 @keyframes fadeInDown{
@@ -215,9 +220,13 @@ footer{
 }
 
 main{
-    background-color: #ffffff;
+    background-color:var(--color-card);
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     margin-top: 40px;
     margin-bottom: 40px;
+}
+
+main.container {
+    max-width: 1050px;
 }
