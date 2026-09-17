@@ -71,6 +71,14 @@ nav {
     font-size: 1.8rem;
     cursor: pointer;
     color:var(--color-text);
+    transition: tranform 0.3s ease, background-clor 0.2s ease;
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+
+.nav-toggle:hover{
+    transform:scale(1.08);
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 nav.open{
@@ -83,6 +91,7 @@ nav.open{
     animation: fadeIn 0.3s ease forwards;
     opacity: 0;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    z-index: 100;
 
 }
 
@@ -191,6 +200,13 @@ nav a{
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 400;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 nav a.active{
@@ -217,6 +233,11 @@ footer{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    transition: transform 0.3s ease;
+}
+
+.site-title:hover{
+    transform: translateX(-50%) scale(1.08);
 }
 
 main{
@@ -229,4 +250,46 @@ main{
 
 main.container {
     max-width: 1050px;
+}
+
+.lightbox{
+    display: none;
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.lightbox.open{
+    display: flex;
+}
+
+.lightbox img{
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.piece img{
+    transition: transform 0.3s ease;
+}
+
+.piece img:hover{
+    transform:scale(1.08)
+}
+
+.piece{
+    overflow: hidden;
+}
+
+.nav-toggle{
+    transition: transform 0.3s ease;
+}
+
+.nav-toggle:hover{
+    transform: scale(1.08);
 }
