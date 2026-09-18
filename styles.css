@@ -5,6 +5,11 @@
     --color-muted: #666666;
     --color-card: #f2ecdf;
 }
+
+*,*::before, *::after{
+    box-sizing: border-box;
+}
+
 @keyframes fadeIn{
     from{
         opacity: 0;
@@ -281,11 +286,6 @@ main.container {
     display: flex;
 }
 
-.lightbox img{
-    max-width: 90%;
-    max-height: 90%;
-}
-
 .piece img{
     transition: transform 0.3s ease;
 }
@@ -412,4 +412,45 @@ main.container {
 
 .lightbox-next:hover{
     transform: translateY(-50%) scale(1.2);
+}
+
+@media (max-width: 600px) {
+    .site-title {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .lightbox-content {
+        flex-direction: column;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .lightbox-image {
+        width: 100%;
+        height: 250px;
+    }
+
+    .lightbox-info {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    nav.open {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+    nav.open a {
+        font-size: 2rem;
+    }
 }
