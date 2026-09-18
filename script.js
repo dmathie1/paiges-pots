@@ -11,6 +11,14 @@ const pieces = [
 
 toggleButton.addEventListener('click',function(){
     nav.classList.toggle('open');
+    document.body.classList.toggle('no-scroll');
+});
+
+const closeButton = document.querySelector('.nav-close');
+
+closeButton.addEventListener('click', function() {
+    nav.classList.remove('open');
+    document.body.classList.toggle('no-scroll');
 });
 
 const gallery = document.querySelector('.gallery-grid');
