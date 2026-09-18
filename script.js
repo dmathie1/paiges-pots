@@ -4,7 +4,9 @@ const nav = document.querySelector('nav');
 const pieces = [
     { name: "Skeleton Mug", description: "Hand-painted, unfired", image: "images/Skel-mug.jpeg" },
     { name: "Skeleton Mug", description: "Hand-painted, unfired", image: "images/Skel-mug.jpeg" },
-    { name: "Skeleton Mug", description: "Hand-painted, unfired", image: "images/Skel-mug.jpeg" }
+    { name: "Skeleton Mug", description: "Hand-painted, unfired", image: "images/Skel-mug.jpeg" },
+    { name: "Placeholder", description: "ADD DESCRIPTION", image: "images/Placeholder.jpg" }
+
 ];
 
 toggleButton.addEventListener('click',function(){
@@ -20,9 +22,8 @@ if(gallery){
         div.innerHTML = `
             <div class = "piece-image">
                 <img src = "${piece.image}" alt="${piece.description}">
+                <h3 class = "piece-title"> ${piece.name}</h3>
             </div>
-            <h3>${piece.name}</h3>
-            <p>${piece.description}</p>
         `;
         gallery.appendChild(div);
     });
@@ -30,21 +31,53 @@ if(gallery){
 
 const galleryImages = document.querySelectorAll('.piece img')
 
-const lightbox  = document.createElement('div');
-lightbox.classList.add('lightbox');
-document.body.appendChild(lightbox);
+let currentIndex = 0;
 
-const lightboxImg = document.createElement('img');
-lightbox.appendChild(lightboxImg);
+const lightbox = document.querySelector('.lightbox');
+const lightboxImage = document.querySelector('.lightbox-image');
+const lightboxTitle = document.querySelector('.lightbox-title');
+const lightboxDescription = document.querySelector('.lightbox-description');
 
-galleryImages.forEach(function(image){
-    image.addEventListener('click', function(){
-        lightboxImg.src = image.src;
-        lightbox.classList.add('open');
+function showPiece(index) {
+    const piece = pieces[index];
+    lightboxImage.src = piece.image;
+    lightboxImage.alt = piece.description;
+    lightboxTitle.textContent = piece.name;
+    lightboxDescription.textContent = piece.description;
+    currentIndex = index;
+}
+
+if (gallery) {
+    const pieceElements = document.querySelectorAll('.piece-image');
+
+    pieceElements.forEach(function(el, index) {
+        el.addEventListener('click', function() {
+            showPiece(index);
+            lightbox.classList.add('open');
+        });
     });
-});
+}
 
-lightbox.addEventListener('click', function(){
+document.querySelector('.lightbox-close').addEventListener('click', function() {
     lightbox.classList.remove('open');
 });
 
+document.querySelector('.lightbox-prev').addEventListener('click', function() {
+    const newIndex = (currentIndex - 1 + pieces.length) % pieces.length;
+    showPiece(newIndex);
+});
+
+document.querySelector('.lightbox-next').addEventListener('click', function() {
+    const newIndex = (currentIndex + 1) % pieces.length;
+    showPiece(newIndex);
+});
+
+const banner = document.querySelector('.banner');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+        banner.classList.add('scrolled');
+    } else {
+        banner.classList.remove('scrolled');
+    }
+});
