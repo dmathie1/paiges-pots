@@ -32,6 +32,7 @@ if(gallery){
                 <img src = "${piece.image}" alt="${piece.description}">
                 <h3 class = "piece-title"> ${piece.name}</h3>
             </div>
+            <p class="piece-caption">${piece.name}</p>
         `;
         gallery.appendChild(div);
     });
