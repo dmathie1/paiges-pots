@@ -426,6 +426,34 @@ main.container {
     margin-top: 0;
 }
 
+.lightbox-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.lightbox-thumb {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.6;
+    border: 2px solid transparent;
+    transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-thumb:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.lightbox-thumb.active {
+    opacity: 1;
+    border-color: var(--color-accent);
+}
+
 .lightbox-close,
 .lightbox-prev,
 .lightbox-next {
