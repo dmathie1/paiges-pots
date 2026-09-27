@@ -185,6 +185,26 @@ button:hover{
     display: block;
 }
 
+.hero-scroll-track{
+    display: flex;
+    height: 100%;
+    width: max-content;
+    animation: heroScroll 60s linear infinite;
+}
+
+.hero-scroll-track img{
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-right: 4px;
+}
+
+@keyframes heroScroll{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+}
+
 .hero-video-overlay{
     position: absolute;
     inset: 0;

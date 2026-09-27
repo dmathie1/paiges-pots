@@ -90,6 +90,22 @@ closeButton.addEventListener('click', function() {
 
 const gallery = document.querySelector('.gallery-grid');
 
+const heroTrack = document.querySelector('.hero-scroll-track');
+
+if (heroTrack) {
+    const heroImages = pieces.map(function(piece) {
+        return piece.images[0];
+    });
+    // Duplicate the set once so the looping animation can travel exactly
+    // -50% and land back on an identical frame, with no visible seam.
+    heroImages.concat(heroImages).forEach(function(src) {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = '';
+        heroTrack.appendChild(img);
+    });
+}
+
 if(gallery){
     pieces.forEach(function(piece, pieceIndex){
         const div = document.createElement('div');
