@@ -8,12 +8,14 @@ const pieces = [
     {
         name: "Ace of Spades",
         description: "Hand-painted ceramic playing card.",
-        images: ["images/Ace.jpeg", "images/Ace2.jpeg"]
+        images: ["images/Ace.jpeg", "images/Ace2.jpeg"],
+        sold: true
     },
     {
         name: "A Winning Hand",
         description: "Ceramic playing cards fanned out in hand \u2014 Queen of Hearts, Joker and Ace of Spades.",
-        images: ["images/AllCard.jpeg"]
+        images: ["images/AllCard.jpeg"],
+        sold: true
     },
     {
         name: "Gothic Cathedral",
@@ -31,7 +33,8 @@ const pieces = [
             "images/CigBox.jpeg", "images/CigBox2.jpeg", "images/CigBox3.jpeg",
             "images/CigBox4.jpeg", "images/CigBox5.jpeg", "images/CigBox6.jpeg",
             "images/CigBox7.jpeg"
-        ]
+        ],
+        sold: true
     },
     {
         name: "Hand Holding a Cigarette",
@@ -44,12 +47,14 @@ const pieces = [
         images: [
             "images/CowboyCup.jpeg", "images/CowboyCup2.jpeg", "images/CowboyCup3.jpeg",
             "images/CowboyCup4.jpeg", "images/CowboyCup5.jpeg", "images/CowboyCup6.jpeg"
-        ]
+        ],
+        sold: true
     },
     {
         name: "Joker",
         description: "Hand-painted ceramic playing card.",
-        images: ["images/Joker.jpeg", "images/Joker2.jpeg"]
+        images: ["images/Joker.jpeg", "images/Joker2.jpeg"],
+        sold: true
     },
     {
         name: "Playing Cards Box",
@@ -64,7 +69,7 @@ const pieces = [
     {
         name: "Queen of Hearts",
         description: "Hand-painted ceramic playing card.",
-        images: ["images/Queen.jpeg", "images/Queen2.jpeg", "images/QueenAce.jpeg"]
+        images: ["images/Queen2.jpeg", "images/Queen.jpeg", "images/QueenAce.jpeg"]
     },
     {
         name: "Tarot Cards Box",
@@ -73,6 +78,51 @@ const pieces = [
             "images/TBox.jpeg", "images/TBox2.jpeg", "images/TBox3.jpeg",
             "images/TBox4.jpeg", "images/TBox5.jpeg", "images/TBox6.jpeg"
         ]
+    },
+    {
+        name: "Better Luck Next Time",
+        description: "Hand-painted ceramic cup with an archer design and lettering.",
+        images: [
+            "images/Archer1.jpeg", "images/Archer2.jpeg", "images/Archer3.jpeg", "images/Archer4.jpeg"
+        ]
+    },
+    {
+        name: "Sleepy Horse Cup",
+        description: "Hand-painted ceramic cup with a horse illustration and a green-glazed interior.",
+        images: ["images/Horse1.jpeg", "images/Horse2.jpeg", "images/Horse3.jpeg"]
+    },
+    {
+        name: "Jousting Knights",
+        description: "Hand-painted ceramic dish with a jousting knights design and chain-link border.",
+        images: ["images/Knight1.jpeg", "images/Kinght2.jpeg"]
+    },
+    {
+        name: "Lucha Libre Cup",
+        description: "Hand-painted ceramic cup with a luchador design.",
+        images: [
+            "images/Luch1.jpeg", "images/Luch2.jpeg", "images/Luch3.jpeg",
+            "images/Luch4.jpeg", "images/Luch5.jpeg"
+        ]
+    },
+    {
+        name: "Two for Joy",
+        description: "Hand-painted ceramic cup with a magpie illustration and lettering.",
+        images: [
+            "images/Magpie1.jpeg", "images/Magpie2.jpeg", "images/Magpie3.jpeg", "images/Magpie4.jpeg"
+        ],
+        sold: true
+    },
+    {
+        name: "Wakey Wakey",
+        description: "Hand-painted ceramic cup with a star motif and lettering, blue-glazed interior.",
+        images: ["images/Wake1.jpeg", "images/Wake2.jpeg", "images/Wake3.jpeg"],
+        sold: true
+    },
+    {
+        name: "Dancing Skeletons Mug",
+        description: "Hand-painted ceramic mug with a star-shaped handle and a dancing skeletons illustration.",
+        images: ["images/Skel1.jpeg", "images/Skel2.jpeg", "images/Skel3.jpeg"],
+        sold: true
     }
 ];
 
@@ -110,10 +160,14 @@ if(gallery){
     pieces.forEach(function(piece, pieceIndex){
         const div = document.createElement('div');
         div.classList.add('piece');
+        const soldMarkup = piece.sold
+            ? '<span class="sold-badge">Sold</span>'
+            : '';
         div.innerHTML = `
             <div class = "piece-image" data-piece-index="${pieceIndex}">
                 <img src = "${piece.images[0]}" alt="${piece.name}">
                 <h3 class = "piece-title"> ${piece.name}</h3>
+                ${soldMarkup}
             </div>
             <p class="piece-caption">${piece.name}</p>
         `;
