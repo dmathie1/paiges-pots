@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
-    <title>Gallery - Paige's Pots</title>
+    <title>Cowboy Cup - Paige's Pots</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
     <div class="banner">
         <header>
                 <button class="nav-toggle" aria-label="Toggle Navigation">☰</button>
 
-            <a href="index.html" class="site-title">Paige's Pots</a>
+            <a href="../index.html" class="site-title">Paige's Pots</a>
 
             <a href="https://www.instagram.com/p.ashley.art/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
@@ -24,22 +24,52 @@
 
             <nav>
                 <button class = "nav-close" aria-label="Close Navigation">X</button>
-                <a href="index.html">Home</a>
-                <a href="gallery.html" class="active">Gallery</a>
-                <a href="contact.html">Contact</a>
+                <a href="../index.html">Home</a>
+                <a href="../gallery.html" class="active">Gallery</a>
+                <a href="../contact.html">Contact</a>
             </nav>
         </header>
     </div>
 
-    <main class="container gallery-grid">
-        <h1>Gallery</h1>
+    <main class="container">
+        <a href="../gallery.html" class="back-link">&larr; Back to Gallery</a>
+
+        <div class="piece-detail">
+            <div class="piece-photos">
+                <div class="piece-main-image-wrap">
+                    <img class="piece-main-image" src="../images/CowboyCup.jpeg" alt="Cowboy Cup">
+                </div>
+                <div class="piece-thumbs">
+                <img class="piece-thumb active" src="../images/CowboyCup.jpeg" data-full="../images/CowboyCup.jpeg" alt="Cowboy Cup photo 1">
+                <img class="piece-thumb" src="../images/CowboyCup2.jpeg" data-full="../images/CowboyCup2.jpeg" alt="Cowboy Cup photo 2">
+                <img class="piece-thumb" src="../images/CowboyCup3.jpeg" data-full="../images/CowboyCup3.jpeg" alt="Cowboy Cup photo 3">
+                <img class="piece-thumb" src="../images/CowboyCup4.jpeg" data-full="../images/CowboyCup4.jpeg" alt="Cowboy Cup photo 4">
+                <img class="piece-thumb" src="../images/CowboyCup5.jpeg" data-full="../images/CowboyCup5.jpeg" alt="Cowboy Cup photo 5">
+                <img class="piece-thumb" src="../images/CowboyCup6.jpeg" data-full="../images/CowboyCup6.jpeg" alt="Cowboy Cup photo 6">
+            </div>
+            </div>
+
+            <div class="piece-detail-info">
+                <h1>Cowboy Cup</h1>
+                <span class="sold-badge">Sold</span>
+                <p class="piece-detail-description">Hand-painted desert cowboy scene cup.</p>
+                <div class="buy-box">
+                <p class="piece-sold-message">This piece has already found a home. Get in touch if you'd like something similar made.</p>
+                <a href="../contact.html" class="buy-button" style="margin-top:16px;">Ask About a Similar Piece</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="piece-pagination">
+            <a href="hand-holding-a-cigarette.html" class="prev-piece">&larr; Hand Holding a Cigarette</a>
+            <a href="joker.html" class="next-piece">Joker &rarr;</a>
+        </div>
     </main>
 
-  
     <footer class="banner">
         <p>&copy; 2026 Paige's Pots</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>

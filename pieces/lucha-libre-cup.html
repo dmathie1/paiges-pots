@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
-    <title>Gallery - Paige's Pots</title>
+    <title>Lucha Libre Cup - Paige's Pots</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
     <div class="banner">
         <header>
                 <button class="nav-toggle" aria-label="Toggle Navigation">☰</button>
 
-            <a href="index.html" class="site-title">Paige's Pots</a>
+            <a href="../index.html" class="site-title">Paige's Pots</a>
 
             <a href="https://www.instagram.com/p.ashley.art/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
@@ -24,22 +24,52 @@
 
             <nav>
                 <button class = "nav-close" aria-label="Close Navigation">X</button>
-                <a href="index.html">Home</a>
-                <a href="gallery.html" class="active">Gallery</a>
-                <a href="contact.html">Contact</a>
+                <a href="../index.html">Home</a>
+                <a href="../gallery.html" class="active">Gallery</a>
+                <a href="../contact.html">Contact</a>
             </nav>
         </header>
     </div>
 
-    <main class="container gallery-grid">
-        <h1>Gallery</h1>
+    <main class="container">
+        <a href="../gallery.html" class="back-link">&larr; Back to Gallery</a>
+
+        <div class="piece-detail">
+            <div class="piece-photos">
+                <div class="piece-main-image-wrap">
+                    <img class="piece-main-image" src="../images/Luch1.jpeg" alt="Lucha Libre Cup">
+                </div>
+                <div class="piece-thumbs">
+                <img class="piece-thumb active" src="../images/Luch1.jpeg" data-full="../images/Luch1.jpeg" alt="Lucha Libre Cup photo 1">
+                <img class="piece-thumb" src="../images/Luch2.jpeg" data-full="../images/Luch2.jpeg" alt="Lucha Libre Cup photo 2">
+                <img class="piece-thumb" src="../images/Luch3.jpeg" data-full="../images/Luch3.jpeg" alt="Lucha Libre Cup photo 3">
+                <img class="piece-thumb" src="../images/Luch4.jpeg" data-full="../images/Luch4.jpeg" alt="Lucha Libre Cup photo 4">
+                <img class="piece-thumb" src="../images/Luch5.jpeg" data-full="../images/Luch5.jpeg" alt="Lucha Libre Cup photo 5">
+            </div>
+            </div>
+
+            <div class="piece-detail-info">
+                <h1>Lucha Libre Cup</h1>
+                
+                <p class="piece-detail-description">Hand-painted ceramic cup with a luchador design.</p>
+                <div class="buy-box">
+                <p class="buy-price">Price on request</p>
+                <a href="../contact.html" class="buy-button">Enquire to Purchase</a>
+                <p class="buy-note">Online checkout is coming soon — for now, get in touch and I'll take it from there.</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="piece-pagination">
+            <a href="jousting-knights.html" class="prev-piece">&larr; Jousting Knights</a>
+            <a href="two-for-joy.html" class="next-piece">Two for Joy &rarr;</a>
+        </div>
     </main>
 
-  
     <footer class="banner">
         <p>&copy; 2026 Paige's Pots</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>

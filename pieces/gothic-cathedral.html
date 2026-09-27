@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
-    <title>My Ceramics</title>
+    <title>Gothic Cathedral - Paige's Pots</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
-
 <body>
     <div class="banner">
         <header>
                 <button class="nav-toggle" aria-label="Toggle Navigation">☰</button>
 
-            <a href="index.html" class="site-title">Paige's Pots</a>
+            <a href="../index.html" class="site-title">Paige's Pots</a>
 
             <a href="https://www.instagram.com/p.ashley.art/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
@@ -25,45 +24,54 @@
 
             <nav>
                 <button class = "nav-close" aria-label="Close Navigation">X</button>
-                <a href="index.html" class="active">Home</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="contact.html">Contact</a>
+                <a href="../index.html">Home</a>
+                <a href="../gallery.html" class="active">Gallery</a>
+                <a href="../contact.html">Contact</a>
             </nav>
         </header>
     </div>
 
-    <div class="hero-video">
-        <div class="hero-scroll-track"></div>
-        <div class="hero-video-overlay">
-            <a href="gallery.html" class="hero-video-button">View the Gallery</a>
-        </div>
-    </div>
-
     <main class="container">
-        <section class="about-section">
-            <img class="about-image" src="images/me.jpg" alt="Paige, the maker behind Paige's Pots">
-            <div class="about-text">
-                <h2>About Me</h2>
-                <p>I first started making ceramics at university. Since then I have continued to make them in my free time, this is a way to showcase some of the things that I have made </p>
+        <a href="../gallery.html" class="back-link">&larr; Back to Gallery</a>
+
+        <div class="piece-detail">
+            <div class="piece-photos">
+                <div class="piece-main-image-wrap">
+                    <img class="piece-main-image" src="../images/Building1.jpeg" alt="Gothic Cathedral">
+                </div>
+                <div class="piece-thumbs">
+                <img class="piece-thumb active" src="../images/Building1.jpeg" data-full="../images/Building1.jpeg" alt="Gothic Cathedral photo 1">
+                <img class="piece-thumb" src="../images/Building2.jpeg" data-full="../images/Building2.jpeg" alt="Gothic Cathedral photo 2">
+                <img class="piece-thumb" src="../images/Building3.jpeg" data-full="../images/Building3.jpeg" alt="Gothic Cathedral photo 3">
+                <img class="piece-thumb" src="../images/Building4.jpeg" data-full="../images/Building4.jpeg" alt="Gothic Cathedral photo 4">
+                <img class="piece-thumb" src="../images/Building5.jpeg" data-full="../images/Building5.jpeg" alt="Gothic Cathedral photo 5">
+                <img class="piece-thumb" src="../images/Building6.jpeg" data-full="../images/Building6.jpeg" alt="Gothic Cathedral photo 6">
+                <img class="piece-thumb" src="../images/Building7.jpeg" data-full="../images/Building7.jpeg" alt="Gothic Cathedral photo 7">
             </div>
-        </section>
+            </div>
 
-        <section class="care-section">
-            <h2>Caring for Your Piece</h2>
-            <p>[Placeholder — add your real care instructions here, e.g. whether pieces are dishwasher and microwave safe or hand-wash only, and any tips for keeping the glaze and hand-painted details looking their best.]</p>
-        </section>
+            <div class="piece-detail-info">
+                <h1>Gothic Cathedral</h1>
+                
+                <p class="piece-detail-description">Hand-built and hand-painted blue and white ceramic sculpture.</p>
+                <div class="buy-box">
+                <p class="buy-price">Price on request</p>
+                <a href="../contact.html" class="buy-button">Enquire to Purchase</a>
+                <p class="buy-note">Online checkout is coming soon — for now, get in touch and I'll take it from there.</p>
+            </div>
+            </div>
+        </div>
 
-        <section class="commission-section">
-            <h2>Custom Commissions</h2>
-            <p>Have something specific in mind? I take on a limited number of custom pieces — get in touch to talk through your idea.</p>
-            <a href="contact.html" class="commission-button">Enquire About a Commission</a>
-        </section>
+        <div class="piece-pagination">
+            <a href="a-winning-hand.html" class="prev-piece">&larr; A Winning Hand</a>
+            <a href="cigarette-box.html" class="next-piece">Cigarette Box &rarr;</a>
+        </div>
     </main>
 
     <footer class="banner">
         <p>&copy; 2026 Paige's Pots</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>
