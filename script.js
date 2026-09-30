@@ -122,7 +122,7 @@ const pieces = [
         name: "Jousting Knights",
         slug: "jousting-knights",
         description: "Hand-painted ceramic dish with a jousting knights design and chain-link border.",
-        images: ["images/Knight1.jpeg", "images/Kinght2.jpeg"],
+        images: ["images/Knight1.jpeg", "images/Knight2.jpeg"],
         price: null
     },
     {
@@ -164,18 +164,25 @@ const pieces = [
 ];
 
 toggleButton.addEventListener('click', function() {
-    nav.classList.toggle('open');
-    document.body.classList.toggle('no-scroll');
+    const open = nav.classList.toggle('open');
+    document.body.classList.toggle('no-scroll', open);
+    toggleButton.setAttribute('aria-expanded', open);
 });
 
 const closeButton = document.querySelector('.nav-close');
 
 closeButton.addEventListener('click', function() {
     nav.classList.remove('open');
-    document.body.classList.toggle('no-scroll');
+    document.body.classList.remove('no-scroll');
+    toggleButton.setAttribute('aria-expanded', 'false');
 });
 
-const gallery = document.querySelector('.gallery-grid');
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 900) {
+        nav.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+    }
+});
 
 const heroTrack = document.querySelector('.hero-scroll-track');
 
@@ -185,9 +192,11 @@ if (heroTrack) {
     });
     // Duplicate the set once so the looping animation can travel exactly
     // -50% and land back on an identical frame, with no visible seam.
-    heroImages.concat(heroImages).forEach(function(src) {
+    heroImages.concat(heroImages).forEach(function(src, i) {
         const img = document.createElement('img');
         img.src = src;
+        img.decoding = 'async';
+        if (i >= heroImages.length) img.loading = 'lazy';
         img.alt = '';
         heroTrack.appendChild(img);
     });
@@ -195,22 +204,40 @@ if (heroTrack) {
 
 // Gallery grid: each piece links straight to its own page rather than
 // opening a popup, so it works as a normal, shareable product page.
+const gallery = document.querySelector('.gallery-grid');
+
 if (gallery) {
-    pieces.forEach(function(piece) {
+    // Available pieces are listed first, sold pieces after.
+    const ordered = pieces.filter(function(p) { return !p.sold; })
+        .concat(pieces.filter(function(p) { return p.sold; }));
+
+    ordered.forEach(function(piece) {
         const div = document.createElement('div');
         div.classList.add('piece');
+        div.dataset.status = piece.sold ? 'sold' : 'available';
         const soldMarkup = piece.sold
             ? '<span class="sold-badge">Sold</span>'
             : '';
         div.innerHTML = `
             <a class="piece-image" href="pieces/${piece.slug}.html">
-                <img src="${piece.images[0]}" alt="${piece.name}">
+                <img src="${piece.images[0]}" alt="${piece.name}" loading="lazy">
                 <h3 class="piece-title">${piece.name}</h3>
                 ${soldMarkup}
             </a>
             <p class="piece-caption">${piece.name}</p>
         `;
         gallery.appendChild(div);
+    });
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            filterButtons.forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            gallery.querySelectorAll('.piece').forEach(function(el) {
+                el.hidden = btn.dataset.filter !== 'all' && el.dataset.status !== btn.dataset.filter;
+            });
+        });
     });
 }
 
@@ -241,3 +268,32 @@ window.addEventListener('scroll', function() {
         banner.classList.remove('scrolled');
     }
 });
+
+// Forms marked data-ajax send in the background and show a message
+// instead of leaving the page.
+document.querySelectorAll('form[data-ajax]').forEach(function(form) {
+    const status = form.parentElement.querySelector('.form-status');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submit = form.querySelector('button[type="submit"]');
+        submit.disabled = true;
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+        }).then(function(res) {
+            if (!res.ok) throw new Error('failed');
+            form.reset();
+            status.textContent = form.dataset.success;
+        }).catch(function() {
+            status.textContent = 'Something went wrong. Please try again, or message me on Instagram.';
+        }).finally(function() {
+            submit.disabled = false;
+        });
+    });
+});
+
+// Contact form: ?piece=Name in the URL pre-fills the "piece" field.
+const pieceField = document.getElementById('piece');
+const pieceParam = new URLSearchParams(window.location.search).get('piece');
+if (pieceField && pieceParam) pieceField.value = pieceParam;
