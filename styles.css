@@ -187,13 +187,6 @@ button:hover{
     overflow: hidden;
 }
 
-.hero-video-media{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
 .hero-scroll-track{
     display: flex;
     height: 100%;
@@ -319,19 +312,6 @@ section:last-child{
     margin-bottom: 0;
 }
 
-.hero{
-    text-align: center;
-    padding: 60px 0;
-}
-
-.hero p{
-    color: #ffffff;
-}
-
-.hero h1{
-    color: #ffffff;
-}
-
 nav a{
     color: var(--color-text);
     text-decoration: none;
@@ -407,14 +387,6 @@ main.container {
 
 .piece{
     overflow: hidden;
-}
-
-.nav-toggle{
-    transition: transform 0.3s ease;
-}
-
-.nav-toggle:hover{
-    transform: scale(1.08);
 }
 
 .banner {
@@ -765,3 +737,14 @@ main.container.info-page{ max-width: 800px; }
 
 /* Keyboard focus */
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{ outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+/* Additions */
+.piece-sold-message + .buy-button{ margin-top: 16px; }
+.form-note{ font-size: 0.8rem; color: var(--color-muted); line-height: 1.4; max-width: 320px; }
+.noscript-note{ grid-column: 1/-1; }
+
+@media (prefers-reduced-motion: reduce){
+    body, nav.open, nav.open a{ animation: none; opacity: 1; }
+    .hero-scroll-track{ animation: none; }
+    *{ transition: none !important; }
+}

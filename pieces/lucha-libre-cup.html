@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucha Libre Cup - Paige's Pots</title>
+    <meta name="description" content="Hand-painted ceramic cup with a luchador design.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🏺%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
     <div class="banner">
         <header>
-                <button class="nav-toggle" aria-label="Toggle Navigation">☰</button>
+                <button class="nav-toggle" aria-label="Toggle Navigation" aria-expanded="false">☰</button>
 
             <a href="../index.html" class="site-title">Paige's Pots</a>
 
@@ -23,9 +25,11 @@
             </a>
 
             <nav>
-                <button class = "nav-close" aria-label="Close Navigation">X</button>
+                <button class="nav-close" aria-label="Close Navigation">X</button>
                 <a href="../index.html">Home</a>
                 <a href="../gallery.html" class="active">Gallery</a>
+                <a href="../care.html">Care</a>
+                <a href="../shipping-returns.html">Shipping &amp; Returns</a>
                 <a href="../contact.html">Contact</a>
             </nav>
         </header>
@@ -66,8 +70,29 @@
         </div>
     </main>
 
-    <footer class="banner">
-        <p>&copy; 2026 Paige's Pots</p>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <p class="footer-brand">Paige's Pots</p>
+                <p>&copy; 2026 Paige's Pots</p>
+            </div>
+            <div class="footer-col footer-links">
+                <a href="../care.html">Care</a>
+                <a href="../shipping-returns.html">Shipping &amp; Returns</a>
+                <a href="../contact.html">Contact</a>
+                <a href="https://www.instagram.com/p.ashley.art/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+            <div class="footer-col">
+                <p class="footer-heading">Hear about new pieces</p>
+                <form class="newsletter-form" action="https://formspree.io/f/xwlpkblk" method="POST" data-ajax data-success="Thanks, you're on the list.">
+                    <input type="hidden" name="_subject" value="Newsletter signup">
+                    <label for="news-email" class="visually-hidden">Email address</label>
+                    <input type="email" id="news-email" name="email" placeholder="Your email" required>
+                    <button type="submit">Sign up</button>
+                </form>
+                <p class="form-status" role="status"></p>
+            </div>
+        </div>
     </footer>
 
     <script src="../script.js"></script>

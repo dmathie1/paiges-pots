@@ -12,15 +12,7 @@ const pieces = [
         name: "Ace of Spades",
         slug: "ace-of-spades",
         description: "Hand-painted ceramic playing card.",
-        images: ["images/Ace.jpeg", "images/Ace2.jpeg"],
-        price: null,
-        sold: true
-    },
-    {
-        name: "A Winning Hand",
-        slug: "a-winning-hand",
-        description: "Ceramic playing cards fanned out in hand \u2014 Queen of Hearts, Joker and Ace of Spades.",
-        images: ["images/AllCard.jpeg"],
+        images: ["images/Ace.jpeg", "images/Ace2.jpeg", "images/AllCard.jpeg"],
         price: null,
         sold: true
     },
@@ -69,7 +61,7 @@ const pieces = [
         name: "Joker",
         slug: "joker",
         description: "Hand-painted ceramic playing card.",
-        images: ["images/Joker.jpeg", "images/Joker2.jpeg"],
+        images: ["images/Joker.jpeg", "images/Joker2.jpeg", "images/AllCard.jpeg"],
         price: null,
         sold: true
     },
@@ -89,7 +81,7 @@ const pieces = [
         name: "Queen of Hearts",
         slug: "queen-of-hearts",
         description: "Hand-painted ceramic playing card.",
-        images: ["images/Queen2.jpeg", "images/Queen.jpeg", "images/QueenAce.jpeg"],
+        images: ["images/Queen2.jpeg", "images/Queen.jpeg", "images/QueenAce.jpeg", "images/AllCard.jpeg"],
         price: null
     },
     {
@@ -248,13 +240,20 @@ const pieceMainImage = document.querySelector('.piece-main-image');
 if (pieceMainImage) {
     const pieceThumbs = document.querySelectorAll('.piece-thumb');
     pieceThumbs.forEach(function(thumb) {
-        thumb.addEventListener('click', function() {
+        function selectThumb() {
             pieceMainImage.src = thumb.dataset.full;
             pieceMainImage.alt = thumb.alt;
             pieceThumbs.forEach(function(t) {
                 t.classList.remove('active');
             });
             thumb.classList.add('active');
+        }
+        thumb.addEventListener('click', selectThumb);
+        thumb.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                selectThumb();
+            }
         });
     });
 }
