@@ -184,14 +184,43 @@ if (heroTrack) {
     });
     // Duplicate the set once so the looping animation can travel exactly
     // -50% and land back on an identical frame, with no visible seam.
-    heroImages.concat(heroImages).forEach(function(src, i) {
+    heroImages.concat(heroImages).forEach(function(src) {
         const img = document.createElement('img');
         img.src = src;
         img.decoding = 'async';
-        if (i >= heroImages.length) img.loading = 'lazy';
         img.alt = '';
         heroTrack.appendChild(img);
     });
+
+    // The scroll distance (-50%) is worked out from the strip's width, but the
+    // photos have no width until they download. On a first visit (nothing
+    // cached yet) some browsers lock in that distance while the strip is still
+    // almost empty, so the banner barely moves until the page is refreshed.
+    // Restarting the animation whenever the strip changes size fixes this.
+    let lastWidth = 0;
+    let restartQueued = false;
+    function restartHeroScroll() {
+        restartQueued = false;
+        const width = heroTrack.scrollWidth;
+        if (width === lastWidth) return;
+        lastWidth = width;
+        heroTrack.style.animation = 'none';
+        void heroTrack.offsetWidth; // force the browser to apply the reset
+        heroTrack.style.animation = '';
+    }
+    function queueRestart() {
+        if (restartQueued) return;
+        restartQueued = true;
+        requestAnimationFrame(restartHeroScroll);
+    }
+    if ('ResizeObserver' in window) {
+        new ResizeObserver(queueRestart).observe(heroTrack);
+    } else {
+        heroTrack.querySelectorAll('img').forEach(function(img) {
+            img.addEventListener('load', queueRestart);
+        });
+        window.addEventListener('resize', queueRestart);
+    }
 }
 
 // Gallery grid: each piece links straight to its own page rather than
