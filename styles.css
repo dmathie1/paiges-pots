@@ -748,3 +748,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     .hero-scroll-track{ animation: none; }
     *{ transition: none !important; }
 }
+
+/* Header logo */
+.site-title{ line-height: 0; }
+.site-logo{ display: block; height: 52px; width: auto; }
+@media (min-width: 901px){
+    .site-logo{ height: 68px; }
+}
