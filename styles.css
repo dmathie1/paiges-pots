@@ -755,3 +755,4 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (min-width: 901px){
     .site-logo{ height: 68px; }
 }
+.footer-brand img{ display: block; height: 44px; width: auto; }
