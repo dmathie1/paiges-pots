@@ -166,6 +166,11 @@ nav.open a:nth-child(5) { animation-delay: 0.4s; }
     object-fit: cover;
 }
 
+.piece-price{
+    color: var(--color-muted);
+    margin-left: 6px;
+}
+
 .piece-caption{
     margin: 8px 0 0;
     text-align: center;

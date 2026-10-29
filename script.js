@@ -4,9 +4,9 @@ const nav = document.querySelector('nav');
 // Each entry is one gallery piece. "images" holds every photo of that piece,
 // with the first image shown in the gallery grid and used as the main photo
 // on the piece's own page. "slug" is used to build the URL of that page
-// (pieces/<slug>.html). "price" is left blank for now — fill it in per
-// piece (e.g. price: "£45") once you're ready to show prices; it will show
-// as "Price on request" until then.
+// (pieces/<slug>.html). "price" is shown under the piece in the gallery;
+// leave it as null for sold pieces. When changing a price, also change it
+// in that piece's own page (the buy-price line).
 const pieces = [
     {
         name: "Ace of Spades",
@@ -25,7 +25,7 @@ const pieces = [
             "images/Building4.jpeg", "images/Building5.jpeg", "images/Building6.jpeg",
             "images/Building7.jpeg"
         ],
-        price: null
+        price: "£180"
     },
     {
         name: "Cigarette Box",
@@ -44,7 +44,7 @@ const pieces = [
         slug: "hand-holding-a-cigarette",
         description: "Ceramic sculpture.",
         images: ["images/CigHand.jpeg", "images/CigHand2.jpeg", "images/CigHand3.jpeg"],
-        price: null
+        price: "£35"
     },
     {
         name: "Cowboy Cup",
@@ -75,14 +75,14 @@ const pieces = [
             "images/PCardB7.jpeg", "images/PCardB8.jpeg", "images/PCardB9.jpeg",
             "images/PCardB10.jpeg", "images/PCardB11.jpeg"
         ],
-        price: null
+        price: "£180"
     },
     {
         name: "Queen of Hearts",
         slug: "queen-of-hearts",
         description: "Hand-painted ceramic playing card.",
         images: ["images/Queen2.jpeg", "images/Queen.jpeg", "images/QueenAce.jpeg", "images/AllCard.jpeg"],
-        price: null
+        price: "£40"
     },
     {
         name: "Tarot Cards Box",
@@ -92,7 +92,7 @@ const pieces = [
             "images/TBox.jpeg", "images/TBox2.jpeg", "images/TBox3.jpeg",
             "images/TBox4.jpeg", "images/TBox5.jpeg", "images/TBox6.jpeg"
         ],
-        price: null
+        price: "£180"
     },
     {
         name: "Better Luck Next Time",
@@ -101,21 +101,21 @@ const pieces = [
         images: [
             "images/Archer1.jpeg", "images/Archer2.jpeg", "images/Archer3.jpeg", "images/Archer4.jpeg"
         ],
-        price: null
+        price: "£30"
     },
     {
         name: "Sleepy Horse Cup",
         slug: "sleepy-horse-cup",
         description: "Hand-painted ceramic cup with a horse illustration and a green-glazed interior.",
         images: ["images/Horse1.jpeg", "images/Horse2.jpeg", "images/Horse3.jpeg"],
-        price: null
+        price: "£30"
     },
     {
         name: "Jousting Knights",
         slug: "jousting-knights",
         description: "Hand-painted ceramic dish with a jousting knights design and chain-link border.",
         images: ["images/Knight1.jpeg", "images/Knight2.jpeg"],
-        price: null
+        price: "£30"
     },
     {
         name: "Lucha Libre Cup",
@@ -125,7 +125,7 @@ const pieces = [
             "images/Luch1.jpeg", "images/Luch2.jpeg", "images/Luch3.jpeg",
             "images/Luch4.jpeg", "images/Luch5.jpeg"
         ],
-        price: null
+        price: "£30"
     },
     {
         name: "Two for Joy",
@@ -256,7 +256,7 @@ if (gallery) {
                 <h3 class="piece-title">${piece.name}</h3>
                 ${soldMarkup}
             </a>
-            <p class="piece-caption">${piece.name}</p>
+            <p class="piece-caption">${piece.name}${!piece.sold && piece.price ? ' <span class="piece-price">' + piece.price + '</span>' : ''}</p>
         `;
         gallery.appendChild(div);
     });
