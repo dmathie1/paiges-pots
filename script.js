@@ -228,14 +228,20 @@ if (heroTrack) {
     }
 }
 
+// The order pieces appear in the gallery: available first, sold after.
+// The gallery grid and the prev/next links on piece pages both use this,
+// so they always match.
+function galleryOrder() {
+    return pieces.filter(function(p) { return !p.sold; })
+        .concat(pieces.filter(function(p) { return p.sold; }));
+}
+
 // Gallery grid: each piece links straight to its own page rather than
 // opening a popup, so it works as a normal, shareable product page.
 const gallery = document.querySelector('.gallery-grid');
 
 if (gallery) {
-    // Available pieces are listed first, sold pieces after.
-    const ordered = pieces.filter(function(p) { return !p.sold; })
-        .concat(pieces.filter(function(p) { return p.sold; }));
+    const ordered = galleryOrder();
 
     ordered.forEach(function(piece) {
         const div = document.createElement('div');
@@ -265,6 +271,31 @@ if (gallery) {
             });
         });
     });
+}
+
+// Piece pages: point the previous/next links at the neighbouring pieces in
+// gallery order, wrapping round at either end. The links written in each
+// page's HTML are only a fallback for when JavaScript is off.
+const piecePagination = document.querySelector('.piece-pagination');
+
+if (piecePagination) {
+    const order = galleryOrder();
+    const slug = window.location.pathname.split('/').pop().replace(/\.html$/, '');
+    const index = order.findIndex(function(p) { return p.slug === slug; });
+    if (index !== -1) {
+        const prev = order[(index - 1 + order.length) % order.length];
+        const next = order[(index + 1) % order.length];
+        const prevLink = piecePagination.querySelector('.prev-piece');
+        const nextLink = piecePagination.querySelector('.next-piece');
+        if (prevLink) {
+            prevLink.href = prev.slug + '.html';
+            prevLink.innerHTML = '&larr; ' + prev.name;
+        }
+        if (nextLink) {
+            nextLink.href = next.slug + '.html';
+            nextLink.innerHTML = next.name + ' &rarr;';
+        }
+    }
 }
 
 // Piece detail pages: clicking a thumbnail swaps the large photo. No-op on
