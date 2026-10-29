@@ -28,6 +28,16 @@ const pieces = [
         price: "£180"
     },
     {
+        name: "Castle Gatehouse",
+        slug: "castle-gatehouse",
+        description: "Hand-built ceramic castle gatehouse with battlements and cut-out arched windows, hand-painted with knights fighting at the gate.",
+        images: [
+            "images/Castle1.jpeg", "images/Castle2.jpeg", "images/Castle3.jpeg",
+            "images/Castle4.jpeg", "images/Castle5.jpeg"
+        ],
+        price: "£180"
+    },
+    {
         name: "Cigarette Box",
         slug: "cigarette-box",
         description: "Ceramic sculpture with hand-painted illustrations and warning labels.",
