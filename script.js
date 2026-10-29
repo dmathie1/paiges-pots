@@ -361,3 +361,35 @@ document.querySelectorAll('form[data-ajax]').forEach(function(form) {
 const pieceField = document.getElementById('piece');
 const pieceParam = new URLSearchParams(window.location.search).get('piece');
 if (pieceField && pieceParam) pieceField.value = pieceParam;
+
+// Scroll fade-in: each block in the page's main content (and the footer)
+// fades and rises into place the first time it scrolls into view. Blocks
+// that come into view together (like a row of gallery tiles) are staggered
+// slightly so they arrive one after another. This runs last so it also
+// catches the gallery tiles built above. Skipped entirely for visitors who
+// have asked their device to reduce motion, or on very old browsers, so
+// nothing is ever left invisible.
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if ('IntersectionObserver' in window && !reduceMotion) {
+    const revealTargets = document.querySelectorAll('main > *, .site-footer');
+
+    const revealObserver = new IntersectionObserver(function(entries) {
+        let delayStep = 0;
+        entries.forEach(function(entry) {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            el.style.transitionDelay = (delayStep * 90) + 'ms';
+            delayStep++;
+            el.classList.add('is-visible');
+            revealObserver.unobserve(el);
+            // Clear the delay once shown so it doesn't slow other effects.
+            setTimeout(function() { el.style.transitionDelay = ''; }, 1200);
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealTargets.forEach(function(el) {
+        el.classList.add('reveal');
+        revealObserver.observe(el);
+    });
+}
