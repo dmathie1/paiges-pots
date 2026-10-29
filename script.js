@@ -155,24 +155,29 @@ const pieces = [
     }
 ];
 
-toggleButton.addEventListener('click', function() {
-    const open = nav.classList.toggle('open');
+function setMenu(open) {
+    nav.classList.toggle('open', open);
     document.body.classList.toggle('no-scroll', open);
     toggleButton.setAttribute('aria-expanded', open);
+    toggleButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+}
+
+// The same button opens and closes the menu; its three lines animate into
+// an X in place (see .burger-line in styles.css).
+toggleButton.addEventListener('click', function() {
+    setMenu(!nav.classList.contains('open'));
 });
 
-const closeButton = document.querySelector('.nav-close');
-
-closeButton.addEventListener('click', function() {
-    nav.classList.remove('open');
-    document.body.classList.remove('no-scroll');
-    toggleButton.setAttribute('aria-expanded', 'false');
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+        setMenu(false);
+        toggleButton.focus();
+    }
 });
 
 window.addEventListener('resize', function() {
-    if (window.innerWidth > 900) {
-        nav.classList.remove('open');
-        document.body.classList.remove('no-scroll');
+    if (window.innerWidth > 900 && nav.classList.contains('open')) {
+        setMenu(false);
     }
 });
 
