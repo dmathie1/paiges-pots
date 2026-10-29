@@ -43,7 +43,7 @@ body {
 }
 
 h1 {
-    color: var(--color-accent);
+    color: var(--color-text);
     font-size: 2.5rem;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -749,7 +749,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* Additions */
 .piece-sold-message + .buy-button{ margin-top: 16px; }
-.form-note{ font-size: 0.8rem; color: var(--color-muted); line-height: 1.4; max-width: 320px; }
 .noscript-note{ grid-column: 1/-1; }
 
 @media (prefers-reduced-motion: reduce){
